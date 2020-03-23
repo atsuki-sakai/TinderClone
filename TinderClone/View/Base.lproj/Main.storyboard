@@ -18,10 +18,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginImage" translatesAutoresizingMaskIntoConstraints="NO" id="cIH-O7-CRe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zL-zi-XHW">
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zL-zi-XHW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="0.90427043650000005" blue="0.40752921349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BtH-Xt-3QP">
+                                <rect key="frame" x="10" y="40" width="80" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Ya-Uq-6wz"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uwj-gI-3i0" customClass="CustomButton" customModule="TinderClone" customModuleProvider="target">
                                 <rect key="frame" x="87.666666666666686" y="384" width="200" height="44"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -113,10 +124,21 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginpage" translatesAutoresizingMaskIntoConstraints="NO" id="aMm-vk-OLH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DER-7n-dwI">
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DER-7n-dwI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65H-d1-MqU">
+                                <rect key="frame" x="10" y="40" width="80" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTaped:" destination="FQ7-xE-lgl" eventType="touchUpInside" id="u6M-zO-leC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrB-Bj-Si2" customClass="CustomButton" customModule="TinderClone" customModuleProvider="target">
                                 <rect key="frame" x="87.666666666666686" y="385" width="200" height="42"/>
                                 <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -129,6 +151,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="loginButtonTaped:" destination="FQ7-xE-lgl" eventType="touchUpInside" id="Q6Y-2Z-ged"/>
                                     <action selector="signUpButtonTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nNT-eC-0n6"/>
                                 </connections>
                             </button>
@@ -185,6 +208,10 @@
                         <viewLayoutGuide key="safeArea" id="tNv-JA-RuN"/>
                     </view>
                     <navigationItem key="navigationItem" id="UtF-0a-R9Z"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="4ng-Br-Txd" id="3RS-rx-kXU"/>
+                        <outlet property="passWordTextField" destination="zls-QL-7tQ" id="8gh-06-60E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nOO-Ph-Wyi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -255,13 +282,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="main" translatesAutoresizingMaskIntoConstraints="NO" id="kLi-cT-89a">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main" translatesAutoresizingMaskIntoConstraints="NO" id="kLi-cT-89a">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F7F-KQ-npe">
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7F-KQ-npe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TinderClone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeJ-fB-oMJ">
@@ -303,13 +328,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="F7F-KQ-npe" firstAttribute="trailing" secondItem="j1b-Mh-7n9" secondAttribute="trailing" id="97d-uV-saQ"/>
+                            <constraint firstAttribute="bottom" secondItem="F7F-KQ-npe" secondAttribute="bottom" id="CWn-Fw-tD8"/>
                             <constraint firstItem="BeJ-fB-oMJ" firstAttribute="top" secondItem="j1b-Mh-7n9" secondAttribute="top" constant="266" id="FjZ-PK-A59"/>
                             <constraint firstItem="adH-Yr-kGV" firstAttribute="top" secondItem="Hik-B3-G98" secondAttribute="bottom" constant="50" id="Ng5-8W-pgD"/>
                             <constraint firstItem="adH-Yr-kGV" firstAttribute="centerX" secondItem="1rx-l3-ocz" secondAttribute="centerX" id="R7r-lW-pEN"/>
+                            <constraint firstItem="F7F-KQ-npe" firstAttribute="leading" secondItem="j1b-Mh-7n9" secondAttribute="leading" id="RcO-B8-aFY"/>
                             <constraint firstItem="j1b-Mh-7n9" firstAttribute="bottom" secondItem="adH-Yr-kGV" secondAttribute="bottom" constant="40" id="SsZ-cC-er2"/>
                             <constraint firstItem="adH-Yr-kGV" firstAttribute="leading" secondItem="j1b-Mh-7n9" secondAttribute="leading" constant="93" id="Ssu-ge-V7Y"/>
+                            <constraint firstItem="kLi-cT-89a" firstAttribute="leading" secondItem="j1b-Mh-7n9" secondAttribute="leading" id="eZa-Wh-bfl"/>
                             <constraint firstItem="Hik-B3-G98" firstAttribute="leading" secondItem="j1b-Mh-7n9" secondAttribute="leading" constant="93" id="gRF-oT-CM2"/>
+                            <constraint firstAttribute="bottom" secondItem="kLi-cT-89a" secondAttribute="bottom" id="hOu-6d-mwj"/>
                             <constraint firstItem="Hik-B3-G98" firstAttribute="centerX" secondItem="1rx-l3-ocz" secondAttribute="centerX" id="lRd-Rk-YOF"/>
+                            <constraint firstItem="F7F-KQ-npe" firstAttribute="top" secondItem="1rx-l3-ocz" secondAttribute="top" id="pUs-Ud-egC"/>
+                            <constraint firstItem="kLi-cT-89a" firstAttribute="trailing" secondItem="j1b-Mh-7n9" secondAttribute="trailing" id="uPJ-ji-WkP"/>
+                            <constraint firstItem="kLi-cT-89a" firstAttribute="top" secondItem="1rx-l3-ocz" secondAttribute="top" id="w8c-vb-ltv"/>
                             <constraint firstItem="BeJ-fB-oMJ" firstAttribute="centerX" secondItem="1rx-l3-ocz" secondAttribute="centerX" id="y2d-d7-Nic"/>
                             <constraint firstItem="j1b-Mh-7n9" firstAttribute="trailing" secondItem="Hik-B3-G98" secondAttribute="trailing" constant="93" id="zJ4-Po-o5t"/>
                             <constraint firstItem="j1b-Mh-7n9" firstAttribute="trailing" secondItem="adH-Yr-kGV" secondAttribute="trailing" constant="93" id="zeC-Pv-ahD"/>

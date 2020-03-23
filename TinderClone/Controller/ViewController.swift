@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailTextField.delegate = self
+        passWordTextField.delegate = self
+        
         
     }
     @IBAction func signUpButtonTaped(_ sender: Any) {
@@ -47,7 +50,7 @@ class ViewController: UIViewController {
             
         }else{
             
-            self.present(cautionAlert(title: "Error", Message: "入力に誤りがあります。"), animated: true, completion: nil)
+            self.present(cautionAlert(title: "Error", Message: "入力してください。"), animated: true, completion: nil)
             
             self.emailTextField.text = ""
             self.passWordTextField.text = ""
@@ -65,12 +68,31 @@ class ViewController: UIViewController {
         animationView.loopMode = .playOnce
         animationView.contentMode = .scaleAspectFit
         self.view.addSubview(animationView)
-    animationView.translatesAutoresizingMaskIntoConstraints = false
+        animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         animationView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
         animationView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3).isActive = true
         
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+        
+    }
+    @IBAction func backButtonTaped(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ViewController:UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
 
