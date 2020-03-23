@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
+
+public func cautionAlert(title:String,Message:String) -> UIAlertController{
+    
+    let alertVC = UIAlertController(title: title, message: Message, preferredStyle: .alert)
+    
+    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+    
+    alertVC.addAction(okAction)
+    
+    return alertVC
+
+}
