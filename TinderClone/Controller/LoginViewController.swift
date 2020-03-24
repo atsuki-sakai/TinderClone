@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
                     
                     if finished == true {
                         
-                        self.performSegue(withIdentifier: "", sender:nil)
+                        self.performSegue(withIdentifier: "musicListVC", sender:nil)
                     }
                 }
             }

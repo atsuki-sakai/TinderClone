@@ -85,6 +85,8 @@ class ProfileInputViewController: UIViewController {
                     userModel.saveUserToFirebase()
                     
                     HUD.hide()
+                    
+                    self.performSegue(withIdentifier: "musicList", sender: nil)
                 }
             }
             uploadTask.resume()

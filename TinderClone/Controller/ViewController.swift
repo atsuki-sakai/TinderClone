@@ -39,6 +39,7 @@ class ViewController: UIViewController {
                     return
                 }
                 //animationを入れる
+                self.passWordTextField.resignFirstResponder()
                 self.setUpAniamtion()
                 self.animationView.play { (finished) in
                     if finished == true{
@@ -90,6 +91,7 @@ extension ViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
+        
         return true
     }
     
