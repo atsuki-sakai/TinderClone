@@ -31,10 +31,7 @@ class ProfileInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userIconView.layer.masksToBounds = false
-        userIconView.layer.cornerRadius = userIconView.frame.height/2
-        userIconView.clipsToBounds = true
-        
+        setUpIconViewI()
         getPermissionToAlbum()
         
         guard Auth.auth().currentUser != nil else{
@@ -157,6 +154,14 @@ class ProfileInputViewController: UIViewController {
         }else{
             generator.notificationOccurred(.success)
         }
+    }
+    private func setUpIconViewI(){
+        
+        userIconView.layer.masksToBounds = false
+        userIconView.layer.cornerRadius = userIconView.frame.height/2
+        userIconView.layer.borderColor = UIColor.systemGray.cgColor
+        userIconView.layer.borderWidth = 2
+        userIconView.clipsToBounds = true
     }
 }
 //textFieldDelegate

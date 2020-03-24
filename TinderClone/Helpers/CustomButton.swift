@@ -13,8 +13,8 @@ class CustomButton: UIButton {
     
     //@IBInspectable でStoryBoard上からも変更が可能
     @IBInspectable var borderWidth:CGFloat = 2
-    @IBInspectable var backGroundColor:UIColor = UIColor.systemTeal
-    @IBInspectable var borderColor:UIColor = UIColor.systemIndigo
+    @IBInspectable var backGroundColor:UIColor = UIColor.black
+    @IBInspectable var borderColor:UIColor = UIColor.white
     
     override init(frame: CGRect) {
         super.init(frame:frame)

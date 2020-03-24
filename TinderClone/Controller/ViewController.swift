@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         emailTextField.delegate = self
         passWordTextField.delegate = self
         
-        
     }
     @IBAction func signUpButtonTaped(_ sender: Any) {
         
