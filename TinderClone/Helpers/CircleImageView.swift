@@ -28,6 +28,7 @@ class CircleImageView:UIImageView{
             layer.shadowColor = UIColor.lightGray.cgColor
             layer.shadowRadius = 2
             layer.shadowOpacity = 1
+            contentMode = .scaleToFill
             
         }
     }

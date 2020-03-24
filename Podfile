@@ -17,5 +17,7 @@ target 'TinderClone' do
   pod"DTGradientButton"
   pod"Firebase/Analytics"
   pod"lottie-ios"
+  pod"Firebase/S
+  torage"
 
 end
