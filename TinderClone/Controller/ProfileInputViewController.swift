@@ -10,26 +10,19 @@ import UIKit
 import Firebase
 
 class ProfileInputViewController: UIViewController {
-
-  
+    
+    //MARK: IBOutlet Vars
     @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var userIconView: UIImageView!
     @IBOutlet weak var birthDayPicker: UIDatePicker!
+    @IBOutlet weak var birthDayTextField: UITextField!
+    @IBOutlet weak var genderSegmented: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

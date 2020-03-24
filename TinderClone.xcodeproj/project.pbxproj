@@ -20,7 +20,6 @@
 		9B0194C72428A2570074F437 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0194C62428A2570074F437 /* Alert.swift */; };
 		9B0194CA2428ADFC0074F437 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 9B0194C92428ADFC0074F437 /* success.json */; };
 		9BD287F82428BADE00894AB2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD287F72428BADE00894AB2 /* LoginViewController.swift */; };
-		9BD287FA2428BB9500894AB2 /* audience-1868137_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BD287F92428BB9500894AB2 /* audience-1868137_640.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +39,6 @@
 		9B0194C62428A2570074F437 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9B0194C92428ADFC0074F437 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		9BD287F72428BADE00894AB2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9BD287F92428BB9500894AB2 /* audience-1868137_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "audience-1868137_640.jpg"; sourceTree = "<group>"; };
 		D2ABEF2F5376FA9C3F2E40AC /* Pods_TinderClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,7 +112,6 @@
 			children = (
 				9B01949624286C980074F437 /* Main.storyboard */,
 				9B01949924286C9B0074F437 /* Assets.xcassets */,
-				9BD287F92428BB9500894AB2 /* audience-1868137_640.jpg */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,7 +212,6 @@
 				9B01949D24286C9B0074F437 /* LaunchScreen.storyboard in Resources */,
 				9B01949A24286C9B0074F437 /* Assets.xcassets in Resources */,
 				9B0194CA2428ADFC0074F437 /* success.json in Resources */,
-				9BD287FA2428BB9500894AB2 /* audience-1868137_640.jpg in Resources */,
 				9B0194A524288ED20074F437 /* GoogleService-Info.plist in Resources */,
 				9B01949824286C980074F437 /* Main.storyboard in Resources */,
 			);
