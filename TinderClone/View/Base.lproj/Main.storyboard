@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="128.57142857142858"/>
+            <point key="canvasLocation" x="1074.4000000000001" y="128.57142857142858"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="c11-ju-dkk">
@@ -192,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nOO-Ph-Wyi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-590.39408866995075"/>
+            <point key="canvasLocation" x="1074.4000000000001" y="-590.39408866995075"/>
         </scene>
         <!--Profile Input View Controller-->
         <scene sceneID="pfs-US-dsb">
@@ -301,12 +301,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="996" y="127.83251231527095"/>
+            <point key="canvasLocation" x="1938.4000000000001" y="127.83251231527095"/>
         </scene>
         <!--Start View Controller-->
         <scene sceneID="n23-Be-Nje">
             <objects>
-                <viewController storyboardIdentifier="start" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C18-dg-O7r" customClass="StartViewController" customModule="TinderClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="start" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="C18-dg-O7r" customClass="StartViewController" customModule="TinderClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1rx-l3-ocz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -378,6 +378,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j1b-Mh-7n9"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1OY-C8-0ZH"/>
                     <connections>
                         <outlet property="loginButton" destination="Hik-B3-G98" id="9qY-NP-JVW"/>
                         <outlet property="signUpButton" destination="adH-Yr-kGV" id="cYi-Wk-yek"/>
@@ -388,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkG-3x-fAG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1151.2" y="-184.72906403940888"/>
+            <point key="canvasLocation" x="-208.80000000000001" y="-184.72906403940888"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Naq-wa-qC9">
@@ -408,7 +409,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukI-dx-30c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1954.4000000000001" y="-207.63546798029557"/>
+            <point key="canvasLocation" x="2896.8000000000002" y="-207.63546798029557"/>
         </scene>
         <!--Search-->
         <scene sceneID="JDD-19-cV2">
@@ -459,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQm-OM-YbK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2981.5999999999999" y="-210.59113300492612"/>
+            <point key="canvasLocation" x="3924" y="-210.59113300492612"/>
         </scene>
         <!--Profile-->
         <scene sceneID="61i-E6-x7o">
@@ -547,19 +548,15 @@
                                         <state key="normal" title="EditProfile">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="editProfileButtonTaped:" destination="ZY9-bY-KsG" eventType="touchUpInside" id="mfw-U6-BFZ"/>
-                                            <action selector="profileEditbuttonTaped:" destination="ZY9-bY-KsG" eventType="touchUpInside" id="chY-AP-Yqx"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHK-6p-LZt" customClass="CustomButton" customModule="TinderClone" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="691" width="69" height="30"/>
+                                        <rect key="frame" x="8" y="661" width="69" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="SignOut">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="signOutButtonTaped:" destination="ZY9-bY-KsG" eventType="touchUpInside" id="3U7-gb-YhH"/>
+                                            <action selector="signOutButton:" destination="ZY9-bY-KsG" eventType="touchUpInside" id="Ac0-7Y-EA1"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -35,19 +35,24 @@ class ProfileViewController: UIViewController {
         
     }
     //MARK: IBActions
-    @IBAction func signOutButtonTaped(_ sender: Any) {
+   
+    @IBAction func signOutButton(_ sender: Any) {
         
         do{
             try Auth.auth().signOut()
+            
+            let startVC = self.storyboard?.instantiateViewController(withIdentifier: "start") as! StartViewController
+            
+            self.present(startVC, animated: true, completion: nil)
+            
+            
+        }catch{
+            print("signOut error")
+            let startVC = self.storyboard?.instantiateViewController(withIdentifier: "start") as! StartViewController
+            
+            self.present(startVC, animated: true, completion: nil)
+
         }
-        catch{
-            performSegue(withIdentifier: "login", sender: nil)
-            return
-        }
-    }
-    @IBAction func profileEditbuttonTaped(_ sender: Any) {
-        
-        //profileEditing
         
     }
     //MARK: Helpers

@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
+                self.resignFirstResponder()
                 self.setUpAnimation()
                 self.animationView.play { (finished) in
                     
