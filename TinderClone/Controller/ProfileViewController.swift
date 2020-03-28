@@ -60,7 +60,9 @@ class ProfileViewController: UIViewController {
         
         if Auth.auth().currentUser == nil {
             
-            performSegue(withIdentifier: "login", sender: nil)
+            let startVC = self.storyboard?.instantiateViewController(withIdentifier: "start") as! StartViewController
+            
+            self.present(startVC, animated: true, completion: nil)
             return
         }
         return

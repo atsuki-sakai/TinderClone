@@ -30,6 +30,8 @@ class LoginViewController: UIViewController {
     //MARK: IBActions
     @IBAction func loginButtonTaped(_ sender: Any) {
         
+        self.view.endEditing(true)
+        
         if emailTextField.text != "" && passWordTextField.text != "" {
             
             Auth.auth().signIn(withEmail: emailTextField.text!, password: passWordTextField.text!) { (authResult, error) in
@@ -41,7 +43,6 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                self.resignFirstResponder()
                 self.setUpAnimation()
                 self.animationView.play { (finished) in
                     

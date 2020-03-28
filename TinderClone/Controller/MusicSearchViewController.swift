@@ -42,7 +42,7 @@ class MusicSearchViewController: UIViewController {
         searchActionButton.layer.cornerRadius = searchActionButton.frame.height/4
         searchActionButton.layer.borderColor = UIColor.darkGray.cgColor
         searchActionButton.layer.borderWidth = 2
-        searchActionButton.setGradientBackgroundColors([UIColor(hex: "#6ee5ee"),UIColor(hex: "#eeb76e")], direction: .toTopRight, for: .normal)
+        searchActionButton.setGradientBackgroundColors([UIColor(hex: "#FAFFAD"),UIColor(hex: "#C1FFC1")], direction: .toTopRight, for: .normal)
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

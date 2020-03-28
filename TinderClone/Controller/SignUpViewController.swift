@@ -30,6 +30,8 @@ class SignUpViewController: UIViewController {
     //MARK: IBActions
     @IBAction func signUpButtonTaped(_ sender: Any) {
         
+        self.view.endEditing(true)
+        
         if emailTextField.text != "" && passWordTextField.text != ""{
             
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passWordTextField.text!) { (authResult, error) in
@@ -42,7 +44,6 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 //animationを入れる
-                self.passWordTextField.resignFirstResponder()
                 self.setUpAniamtion()
                 self.animationView.play { (finished) in
                     if finished == true{
@@ -75,7 +76,7 @@ class SignUpViewController: UIViewController {
         animationView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         animationView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         animationView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
-        animationView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3).isActive = true
+        animationView.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
