@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Lottie
 
-class ViewController: UIViewController {
+class SignUpViewController: UIViewController {
     
     //MARK: IBOutlet Vars
     @IBOutlet weak var emailTextField: UITextField!
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
     }
 }
 //MARK: TextField Delegate
-extension ViewController:UITextFieldDelegate{
+extension SignUpViewController:UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         

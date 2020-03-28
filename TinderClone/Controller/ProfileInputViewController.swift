@@ -62,37 +62,13 @@ class ProfileInputViewController: UIViewController {
                 return
             }
             
-            let ref = Database.database().reference(fromURL: "https://tinderclone-ca88c.firebaseio.com/")
-            let storage = Storage.storage().reference(forURL: "gs://tinderclone-ca88c.appspot.com")
-            
-            let key = ref.childByAutoId().key
-            let imageRef = storage.child("UserProfiles").child("\(key!).jpeg")
-            
-            let imageData:Data = (userIconView.image?.jpegData(compressionQuality: 0.01))!
-            
-            HUD.dimsBackground = true
+            HUD.dimsBackground = false
             HUD.show(.progress)
-            
-            
-            let uploadTask = imageRef.putData(imageData, metadata: nil) { (metadata, error) in
-                
-                imageRef.downloadURL { (url, error) in
-                    
-                    self.userIconString = url!.absoluteString
-                    self.UserName = self.userNameTextField.text!
-                    self.UserAge = Int(self.ageTextField.text!)!
-                    self.UserGender = self.judgeGender()
-                    
-                    let userModel = UserModel(uuid: Auth.auth().currentUser!.uid, userName: self.UserName, userIcon: self.userIconString, userAge: self.UserAge, userGender: self.UserGender)
-                   
-                    userModel.saveUserToFirebase()
-                    
-                    HUD.hide()
-                    
-                    self.performSegue(withIdentifier: "musicList", sender: nil)
-                }
+            DispatchQueue.main.async {
+                self.saveUserProfile()
             }
-            uploadTask.resume()
+            HUD.hide()
+            performSegue(withIdentifier: "musicListVC", sender:nil)
             
         }else{
             DeviceVive(Type: "error")
@@ -110,6 +86,35 @@ class ProfileInputViewController: UIViewController {
         CreateButton.layer.cornerRadius = 15
         CreateButton.layer.borderColor = UIColor.black.cgColor
         CreateButton.layer.borderWidth = 2
+        
+    }
+    private func saveUserProfile(){
+        
+        let ref = Database.database().reference(fromURL: "https://tinderclone-ca88c.firebaseio.com/")
+        let storage = Storage.storage().reference(forURL: "gs://tinderclone-ca88c.appspot.com")
+        
+        let key = ref.childByAutoId().key
+        let imageRef = storage.child("UsersProfile").child("\(key!).jpeg")
+        
+        let imageData:Data = (userIconView.image?.jpegData(compressionQuality: 0.01))!
+        
+        let uploadTask = imageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            
+            imageRef.downloadURL { (url, error) in
+                
+                self.userIconString = url!.absoluteString
+                self.UserName = self.userNameTextField.text!
+                self.UserAge = Int(self.ageTextField.text!)!
+                self.UserGender = self.judgeGender()
+                
+                
+                let userModel = UserModel(uuid: Auth.auth().currentUser!.uid, userName: self.UserName, userIcon: self.userIconString, userAge: self.UserAge, userGender: self.UserGender, Description: "")
+               
+                userModel.saveUserToFirebase()
+                
+            }
+        }
+        uploadTask.resume()
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -230,3 +235,4 @@ extension ProfileInputViewController:UIImagePickerControllerDelegate,UINavigatio
     }
     
 }
+
