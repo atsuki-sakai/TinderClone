@@ -21,6 +21,7 @@
 		9B0194CA2428ADFC0074F437 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 9B0194C92428ADFC0074F437 /* success.json */; };
 		9B79F82A2429BEB20080C599 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79F8292429BEB20080C599 /* CircleImageView.swift */; };
 		9B79F82E2429E4580080C599 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79F82D2429E4580080C599 /* UserModel.swift */; };
+		9BBC37E1242F9CD8005A8A68 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC37E0242F9CD8005A8A68 /* UIColorExtension.swift */; };
 		9BD287F82428BADE00894AB2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD287F72428BADE00894AB2 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		9B0194C92428ADFC0074F437 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
 		9B79F8292429BEB20080C599 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		9B79F82D2429E4580080C599 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9BBC37E0242F9CD8005A8A68 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		9BD287F72428BADE00894AB2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D2ABEF2F5376FA9C3F2E40AC /* Pods_TinderClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 		9B0194C3242896180074F437 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9BBC37E0242F9CD8005A8A68 /* UIColorExtension.swift */,
 				9B0194C42428962A0074F437 /* CustomButton.swift */,
 				9B0194C62428A2570074F437 /* Alert.swift */,
 				9B79F8292429BEB20080C599 /* CircleImageView.swift */,
@@ -279,6 +282,7 @@
 				9B01949124286C980074F437 /* AppDelegate.swift in Sources */,
 				9B0194C2242895A40074F437 /* ProfileInputViewController.swift in Sources */,
 				9B01949324286C980074F437 /* SceneDelegate.swift in Sources */,
+				9BBC37E1242F9CD8005A8A68 /* UIColorExtension.swift in Sources */,
 				9B79F82E2429E4580080C599 /* UserModel.swift in Sources */,
 				9B0194C52428962A0074F437 /* CustomButton.swift in Sources */,
 			);

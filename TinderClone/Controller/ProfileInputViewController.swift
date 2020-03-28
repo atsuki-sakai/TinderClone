@@ -11,6 +11,7 @@ import Firebase
 import FirebaseStorage
 import Photos
 import PKHUD
+import DTGradientButton
 
 class ProfileInputViewController: UIViewController {
     
@@ -33,6 +34,7 @@ class ProfileInputViewController: UIViewController {
         
         setUpIconViewI()
         getPermissionToAlbum()
+        GradientButtonSetUp()
         
         guard Auth.auth().currentUser != nil else{
             
@@ -100,6 +102,16 @@ class ProfileInputViewController: UIViewController {
        
     }
     //MARK: Helpers
+    private func GradientButtonSetUp(){
+        
+        CreateButton.setGradientBackgroundColors([UIColor(hex: "E21F70"),UIColor(hex: "FF4D2C")], direction: .toLeft, for: .normal)
+        CreateButton.layer.masksToBounds = false
+        CreateButton.clipsToBounds = true
+        CreateButton.layer.cornerRadius = 15
+        CreateButton.layer.borderColor = UIColor.black.cgColor
+        CreateButton.layer.borderWidth = 2
+        
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)

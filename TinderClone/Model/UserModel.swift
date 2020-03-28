@@ -34,17 +34,17 @@ class UserModel{
         
         ref = snapShot.ref
         
-        if let value = snapShot.value as? [String:Any]{
+        if let value = snapShot.value as? NSDictionary{
             
             userName = value["userName"] as! String
             userIcon = value["userIcon"] as! String
             userAge = value["userAge"] as! Int
             userGender = value["userGender"] as! String
             userId = value["userId"] as! String
- 
+            
         }
     }
-    public func toContents() -> [String:Any] {
+    public func toContents() -> NSDictionary {
         
         return ["userName":userName,"userIcon":userIcon,"userAge":userAge,"userGender":userGender,"userId":userId]
         
