@@ -41,6 +41,7 @@ class ProfileInputViewController: UIViewController {
         }
         
     }
+    //MARK: IBActions
     @IBAction func userIconViewTaped(_ sender: Any) {
         
         DeviceVive(Type: "error")
@@ -166,7 +167,7 @@ class ProfileInputViewController: UIViewController {
         userIconView.clipsToBounds = true
     }
 }
-//textFieldDelegate
+//MARK: TextField Delegate
 extension ProfileInputViewController:UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -176,6 +177,7 @@ extension ProfileInputViewController:UITextFieldDelegate{
         
     }
 }
+//MARK: UIImagePicker Delegate
 extension ProfileInputViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     func AlbumOpen(){

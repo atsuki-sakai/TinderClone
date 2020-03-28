@@ -12,9 +12,11 @@ import Lottie
 
 class LoginViewController: UIViewController {
 
+    //MARK: IBOutlet Vars
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     
+    //MARK: Vars
     var animationView = AnimationView()
     
     override func viewDidLoad() {
@@ -25,6 +27,7 @@ class LoginViewController: UIViewController {
 
        
     }
+    //MARK: IBActions
     @IBAction func loginButtonTaped(_ sender: Any) {
         
         if emailTextField.text != "" && passWordTextField.text != "" {
@@ -54,11 +57,6 @@ class LoginViewController: UIViewController {
             return
         }
     }
-    @IBAction func backButtonTaped(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
     //MARK: Helpers
     func setUpAnimation(){
         
@@ -81,7 +79,7 @@ class LoginViewController: UIViewController {
     }
 
 }
-
+//MARK: TextField Delegate
 extension LoginViewController:UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

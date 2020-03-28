@@ -12,10 +12,12 @@ import Lottie
 
 class ViewController: UIViewController {
     
+    //MARK: IBOutlet Vars
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var brarView: UIView!
     
+    //MARK: Vars
     let animationView = AnimationView()
     
     override func viewDidLoad() {
@@ -25,6 +27,7 @@ class ViewController: UIViewController {
         passWordTextField.delegate = self
         
     }
+    //MARK: IBActions
     @IBAction func signUpButtonTaped(_ sender: Any) {
         
         if emailTextField.text != "" && passWordTextField.text != ""{
@@ -80,12 +83,8 @@ class ViewController: UIViewController {
         self.view.endEditing(true)
         
     }
-    @IBAction func backButtonTaped(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
-    }
 }
-
+//MARK: TextField Delegate
 extension ViewController:UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
