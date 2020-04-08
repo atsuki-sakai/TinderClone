@@ -21,20 +21,42 @@ class MusicSearchViewController: UIViewController {
     
     //MARK: Vars
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         searchTextField.delegate = self
-        
         CustomButton()
-        
-        
 
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        userValidate()
+        
+    }
+    @IBAction func searchButtontaped(_ sender: Any) {
+        
+       
+        
+    }
     //MARK: Helpers
+    fileprivate func userValidate(){
+        
+        if UserDefaults.standard.object(forKey: "userID") != nil {
+            
+            print(UserDefaults.standard.object(forKey: "userID") as! String)
     
+        }else{
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let startVC = storyboard.instantiateViewController(withIdentifier: "start") as! StartViewController
+            
+            startVC.modalPresentationStyle = .fullScreen
+            self.present(startVC, animated: true, completion: nil)
+        }
+    }
     private func CustomButton(){
         
         searchActionButton.layer.masksToBounds = false
@@ -53,7 +75,6 @@ class MusicSearchViewController: UIViewController {
     
 }
 //MARK: TextField Delegate
-
 extension MusicSearchViewController:UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -42,6 +42,7 @@ class LoginViewController: UIViewController {
                     self.passWordTextField.text = ""
                     return
                 }
+                UserDefaults.standard.set(authResult!.user.uid, forKey: "userID")
                 
                 self.setUpAnimation()
                 self.animationView.play { (finished) in

@@ -18,7 +18,8 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UserDefaults.standard.removeObject(forKey: "userID")
         
     }
     override func viewWillAppear(_ animated: Bool) {

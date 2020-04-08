@@ -43,6 +43,8 @@ class SignUpViewController: UIViewController {
                     self.passWordTextField.text = ""
                     return
                 }
+                //User情報を保持する
+                UserDefaults.standard.set(authResult!.user.uid, forKey: "userID")
                 //animationを入れる
                 self.setUpAniamtion()
                 self.animationView.play { (finished) in

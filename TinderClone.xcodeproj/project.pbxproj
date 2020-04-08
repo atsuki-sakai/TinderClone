@@ -27,6 +27,7 @@
 		9BBC37E7242FAB0C005A8A68 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC37E6242FAB0C005A8A68 /* ProfileViewController.swift */; };
 		9BBC37E9242FB40F005A8A68 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC37E8242FB40F005A8A68 /* EditViewController.swift */; };
 		9BD287F82428BADE00894AB2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD287F72428BADE00894AB2 /* LoginViewController.swift */; };
+		9BFD35AC243DB38500D0D71C /* FavariteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD35AB243DB38500D0D71C /* FavariteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		9BBC37E6242FAB0C005A8A68 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9BBC37E8242FB40F005A8A68 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9BD287F72428BADE00894AB2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9BFD35AB243DB38500D0D71C /* FavariteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavariteViewController.swift; sourceTree = "<group>"; };
 		D2ABEF2F5376FA9C3F2E40AC /* Pods_TinderClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				9BBC37E4242FA2B1005A8A68 /* MusicSearchViewController.swift */,
 				9BBC37E6242FAB0C005A8A68 /* ProfileViewController.swift */,
 				9BBC37E8242FB40F005A8A68 /* EditViewController.swift */,
+				9BFD35AB243DB38500D0D71C /* FavariteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				9BD287F82428BADE00894AB2 /* LoginViewController.swift in Sources */,
 				9B0194C72428A2570074F437 /* Alert.swift in Sources */,
 				9B01949524286C980074F437 /* SignUpViewController.swift in Sources */,
+				9BFD35AC243DB38500D0D71C /* FavariteViewController.swift in Sources */,
 				9BBC37E5242FA2B1005A8A68 /* MusicSearchViewController.swift in Sources */,
 				9B01949124286C980074F437 /* AppDelegate.swift in Sources */,
 				9BBC37E9242FB40F005A8A68 /* EditViewController.swift in Sources */,

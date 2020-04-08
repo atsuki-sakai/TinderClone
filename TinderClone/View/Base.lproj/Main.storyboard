@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C18-dg-O7r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0dt-mW-zJ6">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -396,6 +396,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0dt-mW-zJ6" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="edE-d7-27y"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wET-g3-mdt">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -414,7 +415,7 @@
         <!--Search-->
         <scene sceneID="JDD-19-cV2">
             <objects>
-                <viewController id="spo-Di-ELX" customClass="MusicSearchViewController" customModule="TinderClone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="musicVC" id="spo-Di-ELX" customClass="MusicSearchViewController" customModule="TinderClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yri-k4-imS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,6 +425,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.93781725890000001" green="0.44781396540000001" blue="0.30701737600000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchButtontaped:" destination="spo-Di-ELX" eventType="touchUpInside" id="whU-z9-lIl"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="artist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wfm-Dy-6tv">
                                 <rect key="frame" x="16" y="44" width="260" height="34"/>
@@ -444,12 +448,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ub-iQ-Ce5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2981.5999999999999" y="-901.47783251231533"/>
+            <point key="canvasLocation" x="2896.8000000000002" y="-901.47783251231533"/>
         </scene>
         <!--favorites-->
         <scene sceneID="DiO-94-n2S">
             <objects>
-                <viewController id="S21-5U-3qB" sceneMemberID="viewController">
+                <viewController id="S21-5U-3qB" customClass="FavariteViewController" customModule="TinderClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TGO-xK-f6S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -579,19 +583,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RO9-yF-yCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2981.5999999999999" y="528.32512315270935"/>
+            <point key="canvasLocation" x="2897" y="528"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="list.bullet" catalog="system" width="64" height="44"/>
-        <image name="login" width="426" height="640"/>
-        <image name="main" width="459" height="640"/>
-        <image name="music.note.list" catalog="system" width="64" height="56"/>
-        <image name="noimage" width="225" height="225"/>
-        <image name="person" catalog="system" width="64" height="58"/>
-        <image name="signup" width="427" height="640"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="r2q-eU-EQP"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="login" width="426" height="640"/>
+        <image name="main" width="459" height="640"/>
+        <image name="music.note.list" catalog="system" width="128" height="113"/>
+        <image name="noimage" width="225" height="225"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="signup" width="427" height="640"/>
+    </resources>
 </document>

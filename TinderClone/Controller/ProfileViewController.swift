@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SDWebImage
+import PKHUD
 
 class ProfileViewController: UIViewController {
 
@@ -27,14 +28,36 @@ class ProfileViewController: UIViewController {
     var Description:String?
     var userProfile:UserModel?
     
+    var userID = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        uservalidate()
+        userValidate()
+        
         getProfile()
+        
         
     }
     //MARK: IBActions
+    fileprivate func userValidate(){
+        
+        if UserDefaults.standard.object(forKey: "userID") != nil {
+            
+            print("userdefaults success")
+            userID = UserDefaults.standard.object(forKey: "userID") as! String
+            
+        }else{
+            
+            print("userdefaults nil")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let startVC = storyboard.instantiateViewController(withIdentifier: "start") as! StartViewController
+            
+            startVC.modalPresentationStyle = .fullScreen
+            self.present(startVC, animated: true, completion: nil)
+            
+        }
+    }
    
     @IBAction func signOutButton(_ sender: Any) {
         
@@ -42,6 +65,8 @@ class ProfileViewController: UIViewController {
             try Auth.auth().signOut()
             
             let startVC = self.storyboard?.instantiateViewController(withIdentifier: "start") as! StartViewController
+            
+            UserDefaults.standard.removeObject(forKey: "userID")
             
             self.present(startVC, animated: true, completion: nil)
             
@@ -56,17 +81,7 @@ class ProfileViewController: UIViewController {
         
     }
     //MARK: Helpers
-    private func uservalidate(){
-        
-        if Auth.auth().currentUser == nil {
-            
-            let startVC = self.storyboard?.instantiateViewController(withIdentifier: "start") as! StartViewController
-            
-            self.present(startVC, animated: true, completion: nil)
-            return
-        }
-        return
-    }
+    
     private func profileFieldsSetUp(){
         
         iconView.sd_setImage(with: URL(string:userProfile!.userIcon), completed: nil)
@@ -78,15 +93,18 @@ class ProfileViewController: UIViewController {
     }
     private func getProfile(){
         
+        HUD.dimsBackground = true
+        HUD.show(.progress)
         let ref = Database.database().reference().child("UsersProfile")
         
-        ref.child(Auth.auth().currentUser!.uid).observe(.value) { (snapShot) in
+        ref.child(userID).observe(.value) { (snapShot) in
             
             self.userProfile = UserModel(snapShot: snapShot)
             
             print("userName",self.userProfile?.userName)
             
             self.profileFieldsSetUp()
+            HUD.hide()
         }
     }
     
