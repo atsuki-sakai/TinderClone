@@ -44,3 +44,35 @@ class CustomButton: UIButton {
     }
     
 }
+
+class PlayMusicButton: UIButton {
+    
+    var params: Dictionary<String, Any>
+    
+    override init(frame: CGRect) {
+        
+        self.params = [:]
+        super.init(frame: frame)
+        //superで継承する前に呼ぶ
+        setUpLayer()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        
+        self.params = [:]
+        super.init(coder: aDecoder)
+        
+        self.setUpLayer()
+    }
+    
+    internal func setUpLayer(){
+        
+        self.layer.masksToBounds = false
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 7
+        self.titleLabel?.textColor = UIColor.darkGray
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        self.setTitle("Play", for: .normal)
+        
+    }
+}
+

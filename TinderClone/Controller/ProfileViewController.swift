@@ -21,22 +21,14 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     //MARK: Vars
-    var Icon:String!
-    var Name:String!
-    var Gender:String!
-    var Age:String!
-    var Description:String?
     var userProfile:UserModel?
-    
     var userID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         userValidate()
-        
         getProfile()
-        
         
     }
     //MARK: IBActions
@@ -46,15 +38,6 @@ class ProfileViewController: UIViewController {
             
             print("userdefaults success")
             userID = UserDefaults.standard.object(forKey: "userID") as! String
-            
-        }else{
-            
-            print("userdefaults nil")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let startVC = storyboard.instantiateViewController(withIdentifier: "start") as! StartViewController
-            
-            startVC.modalPresentationStyle = .fullScreen
-            self.present(startVC, animated: true, completion: nil)
             
         }
     }
@@ -104,6 +87,7 @@ class ProfileViewController: UIViewController {
             print("userName",self.userProfile?.userName)
             
             self.profileFieldsSetUp()
+            
             HUD.hide()
         }
     }

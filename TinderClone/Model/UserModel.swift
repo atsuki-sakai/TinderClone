@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 
+
 class UserModel{
     
     var userName:String = ""

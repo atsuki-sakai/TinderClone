@@ -19,6 +19,15 @@
 		9B0194C52428962A0074F437 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0194C42428962A0074F437 /* CustomButton.swift */; };
 		9B0194C72428A2570074F437 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0194C62428A2570074F437 /* Alert.swift */; };
 		9B0194CA2428ADFC0074F437 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 9B0194C92428ADFC0074F437 /* success.json */; };
+		9B6487C9244055BF00E2B353 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6487C7244055BF00E2B353 /* CardViewCell.swift */; };
+		9B6487CA244055BF00E2B353 /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B6487C8244055BF00E2B353 /* CardViewCell.xib */; };
+		9B6487CC2440688C00E2B353 /* MusicDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6487CB2440688C00E2B353 /* MusicDataModel.swift */; };
+		9B72EE1C2442F0C60082B8A0 /* WeFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B72EE1B2442F0C60082B8A0 /* WeFavoritesViewController.swift */; };
+		9B72EE1F2442F24C0082B8A0 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B72EE1D2442F24C0082B8A0 /* TableViewCell.swift */; };
+		9B72EE202442F24C0082B8A0 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B72EE1E2442F24C0082B8A0 /* TableViewCell.xib */; };
+		9B79B3E52441BF910059784A /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79B3E42441BF910059784A /* MyListViewController.swift */; };
+		9B79B3E82441C1A00059784A /* MyMusicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79B3E62441C1A00059784A /* MyMusicViewCell.swift */; };
+		9B79B3E92441C1A00059784A /* MyMusicViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B79B3E72441C1A00059784A /* MyMusicViewCell.xib */; };
 		9B79F82A2429BEB20080C599 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79F8292429BEB20080C599 /* CircleImageView.swift */; };
 		9B79F82E2429E4580080C599 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79F82D2429E4580080C599 /* UserModel.swift */; };
 		9BBC37E1242F9CD8005A8A68 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC37E0242F9CD8005A8A68 /* UIColorExtension.swift */; };
@@ -27,7 +36,6 @@
 		9BBC37E7242FAB0C005A8A68 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC37E6242FAB0C005A8A68 /* ProfileViewController.swift */; };
 		9BBC37E9242FB40F005A8A68 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBC37E8242FB40F005A8A68 /* EditViewController.swift */; };
 		9BD287F82428BADE00894AB2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD287F72428BADE00894AB2 /* LoginViewController.swift */; };
-		9BFD35AC243DB38500D0D71C /* FavariteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD35AB243DB38500D0D71C /* FavariteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +54,15 @@
 		9B0194C42428962A0074F437 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9B0194C62428A2570074F437 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9B0194C92428ADFC0074F437 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		9B6487C7244055BF00E2B353 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		9B6487C8244055BF00E2B353 /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
+		9B6487CB2440688C00E2B353 /* MusicDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDataModel.swift; sourceTree = "<group>"; };
+		9B72EE1B2442F0C60082B8A0 /* WeFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeFavoritesViewController.swift; sourceTree = "<group>"; };
+		9B72EE1D2442F24C0082B8A0 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		9B72EE1E2442F24C0082B8A0 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		9B79B3E42441BF910059784A /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
+		9B79B3E62441C1A00059784A /* MyMusicViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicViewCell.swift; sourceTree = "<group>"; };
+		9B79B3E72441C1A00059784A /* MyMusicViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMusicViewCell.xib; sourceTree = "<group>"; };
 		9B79F8292429BEB20080C599 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		9B79F82D2429E4580080C599 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9BBC37E0242F9CD8005A8A68 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -54,7 +71,6 @@
 		9BBC37E6242FAB0C005A8A68 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9BBC37E8242FB40F005A8A68 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9BD287F72428BADE00894AB2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9BFD35AB243DB38500D0D71C /* FavariteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavariteViewController.swift; sourceTree = "<group>"; };
 		D2ABEF2F5376FA9C3F2E40AC /* Pods_TinderClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,7 +139,8 @@
 				9BBC37E4242FA2B1005A8A68 /* MusicSearchViewController.swift */,
 				9BBC37E6242FAB0C005A8A68 /* ProfileViewController.swift */,
 				9BBC37E8242FB40F005A8A68 /* EditViewController.swift */,
-				9BFD35AB243DB38500D0D71C /* FavariteViewController.swift */,
+				9B79B3E42441BF910059784A /* MyListViewController.swift */,
+				9B72EE1B2442F0C60082B8A0 /* WeFavoritesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -133,6 +150,12 @@
 			children = (
 				9B01949624286C980074F437 /* Main.storyboard */,
 				9B01949924286C9B0074F437 /* Assets.xcassets */,
+				9B6487C7244055BF00E2B353 /* CardViewCell.swift */,
+				9B6487C8244055BF00E2B353 /* CardViewCell.xib */,
+				9B79B3E62441C1A00059784A /* MyMusicViewCell.swift */,
+				9B79B3E72441C1A00059784A /* MyMusicViewCell.xib */,
+				9B72EE1D2442F24C0082B8A0 /* TableViewCell.swift */,
+				9B72EE1E2442F24C0082B8A0 /* TableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				9B79F82D2429E4580080C599 /* UserModel.swift */,
+				9B6487CB2440688C00E2B353 /* MusicDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,9 +257,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6487CA244055BF00E2B353 /* CardViewCell.xib in Resources */,
+				9B79B3E92441C1A00059784A /* MyMusicViewCell.xib in Resources */,
 				9B01949D24286C9B0074F437 /* LaunchScreen.storyboard in Resources */,
 				9B01949A24286C9B0074F437 /* Assets.xcassets in Resources */,
 				9B0194CA2428ADFC0074F437 /* success.json in Resources */,
+				9B72EE202442F24C0082B8A0 /* TableViewCell.xib in Resources */,
 				9B0194A524288ED20074F437 /* GoogleService-Info.plist in Resources */,
 				9B01949824286C980074F437 /* Main.storyboard in Resources */,
 			);
@@ -290,12 +317,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B79B3E52441BF910059784A /* MyListViewController.swift in Sources */,
 				9B79F82A2429BEB20080C599 /* CircleImageView.swift in Sources */,
 				9BD287F82428BADE00894AB2 /* LoginViewController.swift in Sources */,
+				9B6487C9244055BF00E2B353 /* CardViewCell.swift in Sources */,
+				9B72EE1C2442F0C60082B8A0 /* WeFavoritesViewController.swift in Sources */,
+				9B72EE1F2442F24C0082B8A0 /* TableViewCell.swift in Sources */,
 				9B0194C72428A2570074F437 /* Alert.swift in Sources */,
 				9B01949524286C980074F437 /* SignUpViewController.swift in Sources */,
-				9BFD35AC243DB38500D0D71C /* FavariteViewController.swift in Sources */,
 				9BBC37E5242FA2B1005A8A68 /* MusicSearchViewController.swift in Sources */,
+				9B6487CC2440688C00E2B353 /* MusicDataModel.swift in Sources */,
+				9B79B3E82441C1A00059784A /* MyMusicViewCell.swift in Sources */,
 				9B01949124286C980074F437 /* AppDelegate.swift in Sources */,
 				9BBC37E9242FB40F005A8A68 /* EditViewController.swift in Sources */,
 				9BBC37E3242FA132005A8A68 /* StartViewController.swift in Sources */,
