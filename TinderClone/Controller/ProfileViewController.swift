@@ -36,12 +36,26 @@ class ProfileViewController: UIViewController {
         
         if UserDefaults.standard.object(forKey: "userID") != nil {
             
-            print("userdefaults success")
             userID = UserDefaults.standard.object(forKey: "userID") as! String
             
         }
     }
-   
+    @IBAction func editProfileTaped(_ sender: Any) {
+        
+        let userData: UserModel = userProfile!
+        
+        performSegue(withIdentifier: "edit", sender: userData)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "editVC" {
+            
+            let editVC = segue.destination as? EditViewController
+            
+            editVC?.userProfile = sender as? UserModel
+            
+        }
+    }
     @IBAction func signOutButton(_ sender: Any) {
         
         do{
@@ -83,8 +97,6 @@ class ProfileViewController: UIViewController {
         ref.child(userID).observe(.value) { (snapShot) in
             
             self.userProfile = UserModel(snapShot: snapShot)
-            
-            print("userName",self.userProfile?.userName)
             
             self.profileFieldsSetUp()
             

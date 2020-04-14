@@ -50,7 +50,7 @@ class MusicModel {
             
             likeArtist = value["likeArtist"] as? String
             likeMusic = value["likeMusic"] as? String
-            likePreviewUrl = value["likePreviewURL"] as? String
+            likePreviewUrl = value["likePreviewUrl"] as? String
             likeArtistImage = value["likeArtistImage"] as? String
             userName = value["userName"] as? String
             userID = value["userID"] as? String
@@ -69,11 +69,5 @@ class MusicModel {
         musicRef.setValue(convertToDictionaly())
         
     }
-    
-    
-    
-
-    
-    
     
 }

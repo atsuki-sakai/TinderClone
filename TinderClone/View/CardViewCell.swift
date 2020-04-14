@@ -26,14 +26,14 @@ class CardViewCell: CardCell {
     override func prepareForReuse() {
         super.prepareForReuse()
     }
-    public func setBackGroundColor() {
+    public func setBackGroundColor() -> UIColor {
         
         //arc4random()でランダムに数字を生成
         let randomRed: CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
         let randomGreen: CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
         let randomBlue: CGFloat = CGFloat(arc4random()) / CGFloat(UInt32.max)
         
-        self.backgroundColor = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
         
     }
     //CardCellのlayerを変更する。

@@ -19,6 +19,7 @@ import AVFoundation
 class MusicSearchViewController: UIViewController {
 
     //MARK: IBOutle Vars
+    @IBOutlet weak var nosearchImageView: UIImageView!
     @IBOutlet weak var searchingLabel: UILabel!
     @IBOutlet weak var searchButton: CustomButton!
     //VerticalCardSwiperはUIViewを継承
@@ -147,6 +148,7 @@ class MusicSearchViewController: UIViewController {
                     
                     self.cardSwipeView.reloadData()
                     self.searchingLabel.isHidden = true
+                    self.nosearchImageView.isHidden = true
                     HUD.hide()
                     
                 }
@@ -253,15 +255,16 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
             
         }
         
-        verticalCardSwiperView.backgroundColor = UIColor.opaqueSeparator
-        cardSwipeView.backgroundColor = randomBackgroundColor()
+        //verticalSwipeViewの背景色 cardSwipeViewではない事に注意
+        verticalCardSwiperView.backgroundColor = UIColor.darkGray
+        cardCell.backgroundColor = randomBackgroundColor()
         
         cardCell.artistNameLabel.text = artistNames[index]
-        cardCell.artistNameLabel.textColor = UIColor.black
+        cardCell.artistNameLabel.textColor = UIColor.white
         cardCell.artistNameLabel.adjustsFontSizeToFitWidth = true
         
         cardCell.musicTitleLabel.text = musicNames[index]
-        cardCell.musicTitleLabel.textColor = UIColor.black
+        cardCell.musicTitleLabel.textColor = UIColor.white
         cardCell.musicTitleLabel.adjustsFontSizeToFitWidth = true
         
         cardCell.artWorkImageView.sd_setImage(with: URL(string: imageStrings[index])) { (image, error, _, _) in
@@ -277,38 +280,40 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
         cardCell.artWorkImageView.layer.shadowOpacity = 0.8
         
         let playButton = PlayMusicButton()
-        playButton.params["value"] = index
-        
         playButton.translatesAutoresizingMaskIntoConstraints = false
         cardCell.addSubview(playButton)
         
         playButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
         playButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         playButton.centerXAnchor.constraint(equalTo: cardCell.centerXAnchor).isActive = true
-        playButton.topAnchor.constraint(equalTo: cardCell.artistNameLabel.bottomAnchor, constant: 20).isActive = true
-        playButton.setGradientBackgroundColors([UIColor(hex: "#ff66cc"),UIColor(hex: "#ccff66"),UIColor(hex: "#66ccff")], direction: .toTopLeft, for: .normal)
+        playButton.bottomAnchor.constraint(equalTo: cardCell.bottomAnchor, constant: -20).isActive = true
+        
+        playButton.backgroundColor = UIColor.systemGreen
+        
+        playButton.params["value"] = index
         playButton.addTarget(self, action: #selector(MusicSearchViewController.musicPlayAction(_:)), for: .touchUpInside)
         
         return cardCell
     }
     @objc func musicPlayAction(_ sender: PlayMusicButton){
+        
        
         if playFlag == true {
             
             player.stop()
-            
             let indexNumber: Int = sender.params["value"] as! Int
-            let musicUrlString = previewURLs[indexNumber]
-            let url = URL(string: musicUrlString)
-            print(" previewURL :", url!)
+            let url = URL(string: previewURLs[indexNumber])
             
             downloadMusic(url: url!)
-            
+            sender.setTitle("Stop", for: .normal)
+            sender.backgroundColor = UIColor.systemRed
             playFlag = false
             
         }else if playFlag == false {
             
             player.stop()
+            sender.setTitle("Start", for: .normal)
+            sender.backgroundColor = UIColor.systemGreen
             playFlag = true
             
         }
@@ -326,6 +331,8 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
         
         downloadTask.resume()
     }
+    
+    
     fileprivate func musicPlay(url: URL) {
         
         do{
@@ -342,31 +349,35 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
         }
     }
     //swipeした時の処理
-    
-    func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+    func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         
-        print("1")
+        let indexNumber: Int = index
         //right swipe method
+        HUD.show(.success)
         if swipeDirection == .Right {
-            print("2")
             
-            likeMusicNames.append(musicNames[index])
-            likeArtistNames.append(artistNames[index])
-            likePreviewURLs.append(previewURLs[index])
-            likeImageStrings.append(imageStrings[index])
+            likeMusicNames.append(musicNames[indexNumber])
+            likeArtistNames.append(artistNames[indexNumber])
+            likePreviewURLs.append(previewURLs[indexNumber])
+            likeImageStrings.append(imageStrings[indexNumber])
             
             if likeFieldsComplete() {
-                print("3")
+              
                 let musicData = MusicModel(userID: userProfile!.userId, userName: userProfile!.userName,userIcon: userProfile!.userIcon ,likeArtist: artistNames[index], likeMusic: likeMusicNames[index], likePreviewUrl: likePreviewURLs[index], likeArtistImage: likeImageStrings[index], trackViewURL: trackViewUrls[index])
                 
                 musicData.saveMusicData()
-                print("4")
-                
                 
             }
-            print("likeArray Error")
+            print("likeFields Error")
                 
         }
+        artistNames.remove(at: index)
+        musicNames.remove(at: index)
+        previewURLs.remove(at: index)
+        imageStrings.remove(at: index)
+        
+        HUD.hide()
+        
     }
     //MARK: Helpers
     fileprivate func likeFieldsComplete() -> Bool{
@@ -375,12 +386,14 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
     }
 
 }
-//
-//extension MusicSearchViewController: URLSessionDownloadDelegate {
-//
-//    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-//        <#code#>
-//    }
-//
-//
-//}
+
+extension MusicSearchViewController: URLSessionDownloadDelegate {
+
+    //var downloadTask: URLSessionDownloadTaskの完了後に呼ばれる。
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
+        print("complete Dowwnload")
+    }
+
+
+}

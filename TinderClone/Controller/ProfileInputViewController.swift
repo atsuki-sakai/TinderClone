@@ -93,7 +93,7 @@ class ProfileInputViewController: UIViewController {
         let ref = Database.database().reference(fromURL: "https://tinderclone-ca88c.firebaseio.com/")
         let storage = Storage.storage().reference(forURL: "gs://tinderclone-ca88c.appspot.com")
         
-        let key = ref.childByAutoId().key
+        let key = ref.child(Auth.auth().currentUser!.uid).key
         let imageRef = storage.child("UsersProfile").child("\(key!).jpeg")
         
         let imageData:Data = (userIconView.image?.jpegData(compressionQuality: 0.01))!
