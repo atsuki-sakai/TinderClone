@@ -11,15 +11,22 @@ import SDWebImage
 import Firebase
 import PKHUD
 
-class EditViewController: UIViewController {
-    
+class EditViewController: UIViewController{
     
     @IBOutlet weak var userIconView: CircleImageView!
     @IBOutlet weak var userNameLabel: UITextField!
-    @IBOutlet weak var ageLabel: UITextField!
-    @IBOutlet weak var genderSegmented: UISegmentedControl!
-    @IBOutlet weak var DescriptionTextView: UITextView!
-    
+    @IBOutlet weak var DescriptionTextView: UITextView! {
+        
+        didSet{
+            
+            DescriptionTextView.layer.masksToBounds = false
+            DescriptionTextView.clipsToBounds = true
+            DescriptionTextView.layer.cornerRadius = 12
+            DescriptionTextView.layer.borderWidth = 4
+            DescriptionTextView.layer.borderColor = UIColor.white.cgColor
+        }
+    }
+    @IBOutlet weak var baseView: UIView!
     
     var userProfile: UserModel?
     var databaseRef = Database.database().reference(fromURL: "https://tinderclone-ca88c.firebaseio.com/")
@@ -27,13 +34,69 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        DescriptionTextView.delegate = self
+        userNameLabel.delegate = self
+        
         userIconView.sd_setImage(with: URL(string: userProfile!.userIcon), completed: nil)
         userNameLabel.text = userProfile!.userName
-        ageLabel.text = String(userProfile!.userAge)
-        genderSegmented.selectedSegmentIndex = genderConvertInt(Gender: userProfile!.userGender)
         DescriptionTextView.text = userProfile?.Description
         
+        configureObserver()
+            
+    }
+    fileprivate func configureObserver(){
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(EditViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(EditViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+     
+        NotificationCenter.default.removeObserver(self, name:  UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        print("remove NotificationCenter")
+        
+    }
+    @objc func keyboardWillShow(_ notification: NSNotification){
+        
+        let keyboardFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        baseView.frame.origin.y = self.view.frame.height - keyboardFrame.height - baseView.frame.height
+        
+      
+    }
+    @objc func keyboardWillHide(_ notification: NSNotification){
+        
+        //193px
+        
+        let keyboardFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        baseView.frame.origin.y = self.view.frame.height - 193 - baseView.frame.height
+        
+        guard let rect = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else {
+            
+                return
+                
+        }
+        
+        UIView.animate(withDuration: duration) {
+            
+            let transform = CGAffineTransform(translationX: 0, y: 0)
+            self.view.transform = transform
+            
+        }
+        
+  
+    }
+    @IBAction func backButtonTaped(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
     }
     @IBAction func userIConViewTaped(_ sender: Any) {
         
@@ -49,7 +112,7 @@ class EditViewController: UIViewController {
         let imageRef = storageRef.child("UsersProfile").child("\(key!).jpeg")
         imageRef.delete { (error) in
             
-            print("imageRef Delete Error")
+            print("imageRef Delete")
         }
         
         let newImage: Data = (userIconView.image?.jpegData(compressionQuality: 0.01))!
@@ -60,17 +123,9 @@ class EditViewController: UIViewController {
                 
                 let newIcon: String = url!.absoluteString
                 let newName: String = self.userNameLabel.text!
-                
-                guard let userAge = Int(self.ageLabel.text!) else{
-                    
-                    self.present(cautionAlert(title: "AgeField Error", Message: "年齢は数値で入力してください。"), animated: true, completion: nil)
-                    return
-                }
-                let newAge: Int = userAge
-                let newGender = self.convertGender()
                 let newDescription = self.DescriptionTextView.text
                 
-                let newProfile = UserModel(uuid: self.userProfile!.userId, userName: self.userProfile!.userName, userIcon: newIcon, userAge: newAge, userGender: newGender, Description: newDescription ?? "No Description")
+                let newProfile = UserModel(uuid: self.userProfile!.userId, userName: newName, userIcon: newIcon, userAge: self.userProfile!.userAge, userGender: self.userProfile!.userGender, Description: newDescription ?? "No Description")
                 
                 newProfile.saveUserToFirebase()
                 HUD.hide()
@@ -81,20 +136,6 @@ class EditViewController: UIViewController {
         //画面を戻る
         dismiss(animated: true, completion: nil)
         
-    }
-    fileprivate func convertGender() -> String {
-        
-        switch genderSegmented.selectedSegmentIndex {
-            
-            case 0:
-                return "Men"
-            case 1:
-                return "Women"
-            case 2:
-                return "TransGender"
-            default:
-                return "Men"
-        }
     }
     fileprivate func showAlert(){
         
@@ -132,6 +173,15 @@ class EditViewController: UIViewController {
         default:
             return 1
         }
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if(self.DescriptionTextView.isFirstResponder) {
+            
+            self.DescriptionTextView.resignFirstResponder()
+            
+        }
+
     }
 
 }
@@ -185,6 +235,15 @@ extension EditViewController: UIImagePickerControllerDelegate, UINavigationContr
         userIconView.image = image
         
         picker.dismiss(animated: true, completion: nil)
+        
+    }
+}
+extension EditViewController: UITextFieldDelegate, UITextViewDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
         
     }
 }

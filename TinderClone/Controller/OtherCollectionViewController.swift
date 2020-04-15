@@ -29,6 +29,10 @@ class OtherCollectionViewController: UICollectionViewController {
         
         print("OtherCOllectionVC")
         getUserID()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         getUserData()
     }
     fileprivate func getUserID(){
@@ -49,7 +53,7 @@ class OtherCollectionViewController: UICollectionViewController {
     fileprivate func getUserData(){
        
         userDatas.removeAll()
-        
+        print("userDatasCount :\(self.userDatas.count)")
         userRef.observe(.value) { (snapShot) in
             
             for snap in snapShot.children {
@@ -57,8 +61,8 @@ class OtherCollectionViewController: UICollectionViewController {
                 let userData = UserModel(snapShot: snap as! DataSnapshot)
                 
                 self.userDatas.insert(userData, at: 0)
+                print("userdatasCount",self.userDatas.count)
                 self.collectionView.reloadData()
-                
             }
         }
     }

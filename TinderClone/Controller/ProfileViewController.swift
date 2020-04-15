@@ -45,15 +45,15 @@ class ProfileViewController: UIViewController {
         let userData: UserModel = userProfile!
         
         performSegue(withIdentifier: "edit", sender: userData)
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "editVC" {
+        if segue.identifier == "edit" {
             
             let editVC = segue.destination as? EditViewController
             
             editVC?.userProfile = sender as? UserModel
-            
         }
     }
     @IBAction func signOutButton(_ sender: Any) {
