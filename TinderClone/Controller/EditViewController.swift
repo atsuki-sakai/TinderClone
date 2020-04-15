@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import Firebase
 import PKHUD
+import Photos
 
 class EditViewController: UIViewController{
     
@@ -43,7 +44,27 @@ class EditViewController: UIViewController{
         DescriptionTextView.text = userProfile?.Description
         
         configureObserver()
+        permissionToCamera()
             
+    }
+    fileprivate func permissionToCamera(){
+        
+        PHPhotoLibrary.requestAuthorization { (states) in
+            
+            switch states {
+                
+            case .notDetermined:
+                return
+            case .restricted:
+                return
+            case .denied:
+                return
+            case .authorized:
+                print("permissino Completed")
+            @unknown default:
+                return
+            }
+        }
     }
     fileprivate func configureObserver(){
     
