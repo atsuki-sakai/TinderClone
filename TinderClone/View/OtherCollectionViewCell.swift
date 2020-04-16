@@ -14,6 +14,7 @@ class OtherCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var otherView: UIImageView!
     @IBOutlet weak var otherNameLabel: UILabel!
     
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,16 +25,15 @@ class OtherCollectionViewCell: UICollectionViewCell {
         
         self.layer.masksToBounds = false
         self.clipsToBounds = true
-        self.backgroundColor = UIColor(hex: "#ecb000")
         self.layer.cornerRadius = 12
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.borderWidth = 4
+       
         
     }
     func toFields(user: UserModel){
         
         self.otherView.sd_setImage(with: URL(string: user.userIcon), completed: nil)
         self.otherNameLabel.text = user.userName
+        self.otherNameLabel.adjustsFontSizeToFitWidth = true
         
         self.otherNameLabel.textColor = UIColor.white
         

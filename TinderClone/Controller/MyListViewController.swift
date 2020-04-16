@@ -40,34 +40,34 @@ class MyListViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         
         tableView.register(UINib(nibName: "MyListTableViewCell", bundle: nil), forCellReuseIdentifier: "myListCell")
+       print("ViewDidLoad起動")
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("ViewWillApper起動")
         fetchMyMusiList()
-        tableView.reloadData()
-        
     }
     //MARK: Helpers
     fileprivate func fetchMyMusiList(){
         
         HUD.show(.progress)
-        likeMusics.removeAll()
+        
         musicRef.child(userID!).observe(.value) { (_snapShot) in
-            
-            print("_snapShot :",_snapShot)
-            
+            self.likeMusics.removeAll()
+            print("removeAll直後のlikeCount",self.likeMusics.count)
             for snapShot in _snapShot.children {
                 
-                print("snapShot :",snapShot)
                 let snap = snapShot as! DataSnapshot
-                print("snap :",snap)
-                let musicData = MusicModel(snapShot: snap)
                 
-                print("musicData :",musicData)
+                let musicData = MusicModel(snapShot: snap)
+                print("MusicData Song",musicData.likeMusic!)
                 //後ろではなく、先頭に追加されていく
                 self.likeMusics.insert(musicData, at: 0)
-                self.tableView.reloadData()
                 
             }
-            print("success Fetch")
+            self.tableView.reloadData()
+            print("Fetch後のlikeMusicsのカウント : \(self.likeMusics.count)")
             HUD.hide()
         }
     }
@@ -114,7 +114,7 @@ extension MyListViewController: UITableViewDelegate, UITableViewDataSource {
             print("MyListCell Error")
             return MyListTableViewCell()
         }
-        
+        let indexPathRow = indexPath.row
         let playButton = PlayMusicButton()
         playButton.translatesAutoresizingMaskIntoConstraints = false
         myListCell.addSubview(playButton)
@@ -130,6 +130,8 @@ extension MyListViewController: UITableViewDelegate, UITableViewDataSource {
         playButton.params["value"] = indexPath.row
             
         myListCell.backgroundColor = UIColor.systemTeal
+        print("indexPath Cell",indexPathRow)
+        print("LikeMusicsCount : \(likeMusics.count)")
         let music = likeMusics[indexPath.row]
         myListCell.toFields(musicModel: music)
        

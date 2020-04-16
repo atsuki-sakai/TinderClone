@@ -14,8 +14,9 @@ class OtherListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userImageView: CircleImageView!
     
-    var userdata: [String]?
+    var userdata: UserModel?
     var otherMusicLists = [MusicModel]()
     var musicRef: DatabaseReference = Database.database().reference().child("Users")
     var player = AVAudioPlayer()
@@ -29,12 +30,22 @@ class OtherListViewController: UIViewController {
         tableView.rowHeight = 100
         tableView.estimatedRowHeight = UITableView.automaticDimension
         
+        tableView.separatorStyle = .none
+        
         tableView.register(UINib(nibName: "MyListTableViewCell", bundle: nil), forCellReuseIdentifier: "myListCell")
         
+        userNameLabel.text = userdata?.userName
+        userImageView.sd_setImage(with: URL(string: userdata!.userIcon), completed: nil)
         
-        getOtherMusics(userID: userdata![0])
-        userNameLabel.text = "\(userdata![1])'s List"
-        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        getOtherMusics(userID: userdata!.userId)
+        
     }
     fileprivate func getOtherMusics(userID: String){
         
@@ -47,6 +58,7 @@ class OtherListViewController: UIViewController {
                 let otherMusic = MusicModel(snapShot: snap as! DataSnapshot)
                 
                 self.otherMusicLists.insert(otherMusic, at: 0)
+                print("1",self.otherMusicLists.count)
                 
             }
             self.tableView.reloadData()
@@ -68,6 +80,7 @@ extension OtherListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        print("Index OtherList : \(indexPath.row)")
         guard let otherCell = tableView.dequeueReusableCell(withIdentifier: "myListCell", for: indexPath) as? MyListTableViewCell else {
             
             print("Cell Error")

@@ -12,7 +12,7 @@ import UIKit
 class CircleImageView:UIImageView{
     
     @IBInspectable var borderColor:UIColor = UIColor.systemGray
-    @IBInspectable var borderWidth:CGFloat = 2
+    @IBInspectable var borderWidth:CGFloat = 4
     
     
     override var image: UIImage?{

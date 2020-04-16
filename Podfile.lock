@@ -16,6 +16,9 @@ PODS:
   - Firebase/Database (6.20.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 6.1.4)
+  - Firebase/Messaging (6.20.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.3.0)
   - Firebase/Storage (6.20.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 3.6.0)
@@ -28,6 +31,7 @@ PODS:
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (= 0.3.9011)
+  - FirebaseAnalyticsInterop (1.5.0)
   - FirebaseAuth (6.5.0):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.6)
@@ -55,6 +59,20 @@ PODS:
     - FirebaseCore (~> 6.6)
     - GoogleUtilities/UserDefaults (~> 6.5)
     - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.3.2):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+  - FirebaseMessaging (4.3.0):
+    - FirebaseAnalyticsInterop (~> 1.5)
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstanceID (~> 4.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Reachability (~> 6.5)
+    - GoogleUtilities/UserDefaults (~> 6.5)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - FirebaseStorage (3.6.0):
     - FirebaseAuthInterop (~> 1.1)
     - FirebaseCore (~> 6.6)
@@ -97,6 +115,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PKHUD (5.3.0)
   - PromisesObjC (1.2.8)
+  - Protobuf (3.11.4)
   - SDWebImage (5.6.1):
     - SDWebImage/Core (= 5.6.1)
   - SDWebImage/Core (5.6.1)
@@ -110,6 +129,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/Storage
   - lottie-ios
   - PKHUD (~> 5.0)
@@ -123,6 +143,7 @@ SPEC REPOS:
     - DTGradientButton
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
     - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
@@ -130,6 +151,8 @@ SPEC REPOS:
     - FirebaseCoreDiagnosticsInterop
     - FirebaseDatabase
     - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -141,6 +164,7 @@ SPEC REPOS:
     - nanopb
     - PKHUD
     - PromisesObjC
+    - Protobuf
     - SDWebImage
     - SwiftyJSON
     - VerticalCardSwiper
@@ -150,6 +174,7 @@ SPEC CHECKSUMS:
   DTGradientButton: 6f0f696cd433255d226c05e4ab047d991d13d4ef
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
+  FirebaseAnalyticsInterop: 3f86269c38ae41f47afeb43ebf32a001f58fcdae
   FirebaseAuth: 648892fd0afeb27ef97c1d2e667329855f1004bc
   FirebaseAuthInterop: a0f37ae05833af156e72028f648d313f7e7592e9
   FirebaseCore: ed0a24c758a57c2b88c5efa8e6a8195e868af589
@@ -157,6 +182,8 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
   FirebaseDatabase: 0144e0706a4761f1b0e8679572eba8095ddb59be
   FirebaseInstallations: 575cd32f2aec0feeb0e44f5d0110a09e5e60b47b
+  FirebaseInstanceID: 7ee0d6777013bb952f377b41965bf132b6a075be
+  FirebaseMessaging: 4ec33842d36b3319e062e51fb8b35a74f726950d
   FirebaseStorage: b43ee271294227e1a3225544b073f3b49b427f46
   GoogleAppMeasurement: c29d405ff76e18551b5d158eaba6753fda8c7542
   GoogleDataTransport: a857c6a002d201b524dd4bc2ed7e7355ed07e785
@@ -168,10 +195,11 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
+  Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SDWebImage: 7edb9c3ea661e77a66661f7f044de8c1b55d1120
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   VerticalCardSwiper: 41c8c0d8d87511ec269347f5671386acf66cd31a
 
-PODFILE CHECKSUM: 3a9449bfc06e6cef5aca9a68a0e2130039425a6f
+PODFILE CHECKSUM: 85687bcc4f733a9c0fdd9724a2f73cf6598085ab
 
 COCOAPODS: 1.8.4

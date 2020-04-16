@@ -11,7 +11,6 @@ import Firebase
 
 class OtherCollectionViewController: UICollectionViewController {
     
-    
     var userID: String?
     var userDatas = [UserModel]()
     var userRef = Database.database().reference().child("UsersProfile")
@@ -33,7 +32,13 @@ class OtherCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationItem.title = "Users List"
+        
         getUserData()
+        
     }
     fileprivate func getUserID(){
         
@@ -85,9 +90,8 @@ class OtherCollectionViewController: UICollectionViewController {
     
         let user = userDatas[indexPath.row]
         
-        
-        
         otherCell.toFields(user: user)
+        print("index",indexPath.row)
     
         return otherCell
     }
@@ -118,10 +122,9 @@ extension OtherCollectionViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let userID = userDatas[indexPath.row].userId
-        let userName = userDatas[indexPath.row].userName
-        let userdata: [String] = [userID,userName]
+        let userData = userDatas[indexPath.row]
         
-        performSegue(withIdentifier: "otherList", sender: userdata)
+        performSegue(withIdentifier: "otherList", sender: userData)
         
         print("tap cell")
     }
@@ -131,7 +134,7 @@ extension OtherCollectionViewController: UICollectionViewDelegateFlowLayout {
             
             let otherListVC = segue.destination as! OtherListViewController
             
-            otherListVC.userdata = sender as? [String]
+            otherListVC.userdata = sender as? UserModel
             
         }else{
             print("segue Error")

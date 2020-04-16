@@ -128,6 +128,12 @@ class MusicSearchViewController: UIViewController {
                 let trackViewUrl = json["results"][i]["trackViewUrl"].string ?? "No Data"
                 let musicName = json["results"][i]["trackCensoredName"].string ?? "No Data"
                 
+                print("artworkURL\(i)番目 : \(artWorkURL!)")
+                print("previewURL\(i)番目 : \(previewUrl)")
+                print("artistName\(i)番目 : \(artistName)")
+                print("trackViewUrl\(i)番目 : \(trackViewUrl)")
+                print("musicName\(i)番目 : \(musicName)")
+                
                 
                 if let range = artWorkURL?.range(of: "60x60bb"){
                     //画像のサイズを大きくして取得
@@ -254,20 +260,23 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
             return CardCell()
             
         }
+        //これでcardForItemとwillSwiperのindexNumberが一致、予想通りの動きとなる
+        let indexNumber = index + 1
+        print("cardForItem index : \(indexNumber)")
         
         //verticalSwipeViewの背景色 cardSwipeViewではない事に注意
         verticalCardSwiperView.backgroundColor = UIColor.darkGray
         cardCell.backgroundColor = randomBackgroundColor()
         
-        cardCell.artistNameLabel.text = artistNames[index]
+        cardCell.artistNameLabel.text = artistNames[indexNumber]
         cardCell.artistNameLabel.textColor = UIColor.white
         cardCell.artistNameLabel.adjustsFontSizeToFitWidth = true
         
-        cardCell.musicTitleLabel.text = musicNames[index]
+        cardCell.musicTitleLabel.text = musicNames[indexNumber]
         cardCell.musicTitleLabel.textColor = UIColor.white
         cardCell.musicTitleLabel.adjustsFontSizeToFitWidth = true
         
-        cardCell.artWorkImageView.sd_setImage(with: URL(string: imageStrings[index])) { (image, error, _, _) in
+        cardCell.artWorkImageView.sd_setImage(with: URL(string: imageStrings[indexNumber])) { (image, error, _, _) in
             
             cardCell.artWorkImageView.setNeedsLayout()
             
@@ -290,7 +299,7 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
         
         playButton.backgroundColor = UIColor.systemGreen
         
-        playButton.params["value"] = index
+        playButton.params["value"] = indexNumber
         playButton.addTarget(self, action: #selector(MusicSearchViewController.musicPlayAction(_:)), for: .touchUpInside)
         
         return cardCell
@@ -349,9 +358,10 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
         }
     }
     //swipeした時の処理
-    func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+    func didSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
         
         let indexNumber: Int = index
+        print("didSwipe index : \(indexNumber)")
         //right swipe method
         HUD.show(.success)
         if swipeDirection == .Right {
@@ -360,29 +370,36 @@ extension MusicSearchViewController: VerticalCardSwiperDelegate, VerticalCardSwi
             likeArtistNames.append(artistNames[indexNumber])
             likePreviewURLs.append(previewURLs[indexNumber])
             likeImageStrings.append(imageStrings[indexNumber])
+            likeTrackViewUrls.append(trackViewUrls[indexNumber])
             
-            if likeFieldsComplete() {
-              
-                let musicData = MusicModel(userID: userProfile!.userId, userName: userProfile!.userName,userIcon: userProfile!.userIcon ,likeArtist: artistNames[index], likeMusic: likeMusicNames[index], likePreviewUrl: likePreviewURLs[index], likeArtistImage: likeImageStrings[index], trackViewURL: trackViewUrls[index])
                 
-                musicData.saveMusicData()
+            let musicData = MusicModel(userID: userProfile!.userId, userName: userProfile!.userName,userIcon: userProfile!.userIcon ,likeArtist: artistNames[indexNumber], likeMusic: musicNames[indexNumber], likePreviewUrl: previewURLs[indexNumber], likeArtistImage: imageStrings[indexNumber], trackViewURL: trackViewUrls[indexNumber])
+            
+            musicData.saveMusicData()
                 
-            }
-            print("likeFields Error")
                 
         }
-        artistNames.remove(at: index)
-        musicNames.remove(at: index)
-        previewURLs.remove(at: index)
-        imageStrings.remove(at: index)
         
         HUD.hide()
+       
+        
+    }
+    func willSwipeCardAway(card: CardCell, index: Int, swipeDirection: SwipeDirection) {
+        
+        let indexNumber = index
+        print("WillSwipe index \(indexNumber)")
+        
+        artistNames.remove(at: indexNumber)
+        musicNames.remove(at: indexNumber)
+        previewURLs.remove(at: indexNumber)
+        imageStrings.remove(at: indexNumber)
+        trackViewUrls.remove(at: indexNumber)
         
     }
     //MARK: Helpers
-    fileprivate func likeFieldsComplete() -> Bool{
+    fileprivate func likesCount() -> Bool{
         
-        return(likeMusicNames.count != 0 && likeArtistNames.count != 0 && likePreviewURLs.count != 0 && likeImageStrings.count != 0)
+        return true
     }
 
 }
