@@ -17,6 +17,7 @@ class MyListViewController: UIViewController {
     //MARK: IBOutlets Vars
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userListLabel: UILabel!
+   
     
     //MARK: Vars
     var userID: String?
@@ -40,6 +41,7 @@ class MyListViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         
         tableView.register(UINib(nibName: "MyListTableViewCell", bundle: nil), forCellReuseIdentifier: "myListCell")
+        
        print("ViewDidLoad起動")
         
     }
@@ -137,6 +139,58 @@ extension MyListViewController: UITableViewDelegate, UITableViewDataSource {
        
         return myListCell
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+        
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        
+        return UITableViewCell.EditingStyle.delete
+        
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteButton: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "Delete") { (action, index) in
+            
+            let uuid = self.likeMusics[indexPath.row].uuid
+            self.likeMusics.remove(at: indexPath.row)
+            let deleteItem = self.musicRef.child(self.userID!).child(uuid!)
+            deleteItem.removeValue()
+            self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            print("IndexRow : \(indexPath.row)")
+            print("likeMusicCount : \(self.likeMusics.count)")
+            
+            self.tableView.reloadData()
+            
+        }
+        deleteButton.backgroundColor = UIColor.systemRed
+        
+        return [deleteButton]
+    }
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+            
+            completionHandler(true)
+            let uuid = self.likeMusics[indexPath.row].uuid
+            self.likeMusics.remove(at: indexPath.row)
+            let deleteItem = self.musicRef.child(self.userID!).child(uuid!)
+            deleteItem.removeValue()
+            self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            print("IndexRow : \(indexPath.row)")
+            print("likeMusicCount : \(self.likeMusics.count)")
+            
+            self.tableView.reloadData()
+            
+        }
+        let swipeAction = UISwipeActionsConfiguration(actions: [delete])
+        swipeAction.performsFirstActionWithFullSwipe = false
+        
+        return swipeAction
+        
+    }
     @objc func musicPlay(_ sender: PlayMusicButton) {
         
         player.stop()
@@ -157,7 +211,7 @@ extension MyListViewController: UITableViewDelegate, UITableViewDataSource {
         }else if flag == false {
             
             player.stop()
-            sender.setTitle("Start", for: .normal)
+            sender.setTitle("Play", for: .normal)
             sender.backgroundColor = UIColor.systemGreen
             flag = true
             

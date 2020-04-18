@@ -38,7 +38,6 @@ class MyListTableViewCell: UITableViewCell {
         
         self.View.layer.cornerRadius = 12
         self.View.backgroundColor = UIColor.systemTeal
-        
     }
     internal func toFields(musicModel: MusicModel) {
         

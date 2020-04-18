@@ -16,7 +16,7 @@ class MusicModel {
     var userID: String?
     var userName: String?
     var userIcon: String?
-    
+    var uuid: String?
     var likeArtist: String?
     var likeMusic: String?
     var likePreviewUrl: String?
@@ -32,6 +32,7 @@ class MusicModel {
         
         self.userID = userID
         self.userName = userName
+        self.uuid = NSUUID().uuidString
         self.userIcon = userIcon
         self.likeArtist = likeArtist
         self.likeMusic = likeMusic
@@ -39,7 +40,7 @@ class MusicModel {
         self.likeArtistImage = likeArtistImage
         self.trackViewURL = trackViewURL
         
-        self.musicRef = Database.database().reference().child("Users").child(userID).childByAutoId()
+        self.musicRef = Database.database().reference().child("Users").child(userID).child(uuid!)
         
     }
     init(snapShot: DataSnapshot) {
@@ -56,12 +57,13 @@ class MusicModel {
             userID = value["userID"] as? String
             userIcon = value["userIcon"] as? String
             trackViewURL = value["trackViewUrl"] as? String
+            uuid = value["uuid"] as? String
             
         }
     }
     public func convertToDictionaly() -> NSDictionary{
         
-        return["userID": userID,"userName": userName,"userIcon": userIcon,"likeArtist": likeArtist, "likeMusic": likeMusic, "likePreviewUrl": likePreviewUrl, "likeArtistImage": likeArtistImage, "trackViewUrl": trackViewURL]
+        return["userID": userID,"userName": userName,"userIcon": userIcon,"uuid":uuid,"likeArtist": likeArtist, "likeMusic": likeMusic, "likePreviewUrl": likePreviewUrl, "likeArtistImage": likeArtistImage, "trackViewUrl": trackViewURL]
         
     }
     public func saveMusicData(){
